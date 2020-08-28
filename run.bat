@@ -1,7 +1,8 @@
 :: Script for setting up virtual environment
 
 @echo off
-CALL activate personal_nb
+CALL python -m venv personal_nb
+CALL personal_nb\Scripts\activate
 CALL jupyter contrib nbextension install --sys-prefix
 echo 'Enabling jupyter extensions...'
 CALL jupyter nbextension enable toc2/main --sys-prefix

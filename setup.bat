@@ -4,7 +4,7 @@
 echo 'Creating virtual environment...'
 CALL python -m venv personal_nb
 echo 'Launching virtual environment...'
-CALL activate personal_nb
+CALL personal_nb\Scripts\activate
 echo 'Installing the dependencies...'
 CALL pip install -U jupyter==1.0.0
 echo 'Installing the packages to run the notebook...'
