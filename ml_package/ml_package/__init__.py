@@ -116,3 +116,78 @@ display(HTML("""
 
 def load_icon(): 
     return display(Markdown('<div><div class="loader"></div><h3>&nbsp;LOADING</h3></div>'))
+
+
+
+
+
+
+# # enabling bokeh plots to be rendered in HTML report
+
+# from jinja2 import Template
+# from bokeh.embed import components
+
+# html_plot = Template("""
+# <!DOCTYPE html>
+# <html lang="en-US">
+
+# <link
+#     href="http://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.css"
+#     rel="stylesheet" type="text/css"
+# >
+# <script src="http://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js"></script>
+# <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-1.4.0.min.js"></script>
+# <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-1.4.0.min.js"></script>
+
+# <body>
+#     {{ script }}
+#     {{ div }}
+# </body>
+
+# </html>
+# """)
+
+
+
+# # The code in the following cell is a function that will help to display dataframes using Plotly with scrollable rows
+# import plotly.graph_objects as go
+
+
+# def display_data(data_table, sel_col=None):
+#     data_table_series = [data_table[i] for i in data_table.columns]
+    
+#     cell_color = []
+#     n = len(data_table)
+#     for col in data_table.columns:
+#         if sel_col is None:
+#             cell_color.append(['rgba(0,191,255,0.5)']*n)
+#         else:
+#             if col!=sel_col:
+#                 cell_color.append(['rgba(0,191,255,0.5)']*n)
+#             else:
+#                 cell_color.append(['paleturquoise']*n)
+
+#     fig = go.Figure(data=[go.Table(
+#         header=dict(values=list(data_table.columns),
+#                     fill_color='grey',
+#                     align='center',
+#                     font=dict(color='white', size=15)
+#                    ),
+#         cells=dict(values=data_table_series,
+#                    fill_color=cell_color,
+#                    align='center',
+#                    font=dict(color='black', size=10)
+#                   ))
+#     ])
+
+#     if data_table.shape[0] == 1:
+#         fig_ht = 75
+#     elif data_table.shape[0] >= 2 and data_table.shape[0] <= 9:
+#         fig_ht = 40*data_table.shape[0]
+#     else:
+#         fig_ht = 400
+    
+#     fig.update_layout(width=150*len(data_table.columns), 
+#                       height=fig_ht,
+#                       margin=dict(l=0,r=0,b=0,t=0,pad=0))
+#     fig.show(config={'displaylogo': False})
