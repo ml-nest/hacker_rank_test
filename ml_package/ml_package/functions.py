@@ -31,6 +31,7 @@ def z_score(data, rqrd_col, thresh):
 
 
 
+
 #------------------------------------------------------Plots----------------------
 def plot_zscore(df_z_outlier, enter_col, z_thresh):
   """
